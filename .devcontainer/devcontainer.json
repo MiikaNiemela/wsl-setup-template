@@ -1,9 +1,21 @@
 {
   "name": "Python & JS/TS Dev Environment",
-  "image": "://microsoft.com",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [47821, 51734],
+  "portsAttributes": {
+    "47821": {
+      "label": "Backend API",
+      "onAutoForward": "notify"
+    },
+    "51734": {
+      "label": "Frontend App",
+      "onAutoForward": "openBrowser"
     }
   },
   "containerEnv": {
@@ -12,12 +24,26 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": [ //TODO: Review list; best guess for basics
+      "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
+        "ms-python.black-formatter",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
-      ]
+        "esbenp.prettier-vscode",
+        "ms-playwright.playwright"
+      ],
+      "settings": {
+        "js/ts.tsdk.path": "node_modules/typescript/lib",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true
+        },
+        "python.analysis.typeCheckingMode": "basic",
+        "python.analysis.autoImportCompletions": true
+      }
     }
   },
   "postCreateCommand": "bash .devcontainer/setup.sh"
