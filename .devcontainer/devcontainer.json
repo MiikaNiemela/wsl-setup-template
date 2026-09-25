@@ -7,17 +7,18 @@
     },
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "forwardPorts": [47821, 51734],
-  "portsAttributes": {
-    "47821": {
-      "label": "Backend API",
-      "onAutoForward": "notify"
-    },
-    "51734": {
-      "label": "Frontend App",
-      "onAutoForward": "openBrowser"
-    }
-  },
+  // Define these when your app is ready for it
+  // "forwardPorts": [47821, 51734],
+  // "portsAttributes": {
+  //  "47821": {
+  //    "label": "Backend API",
+  //    "onAutoForward": "notify"
+  //  },
+  //  "51734": {
+  //    "label": "Frontend App",
+  //    "onAutoForward": "openBrowser"
+  //  }
+  // },
   "containerEnv": {
     "PROJECT_MODE": "development",
     "NODE_ENV": "development"
